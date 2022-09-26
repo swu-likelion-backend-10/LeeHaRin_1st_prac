@@ -6,6 +6,11 @@
 </head>
 <body>
     <a th:href="@{/info}">글쓰기</a>
+
+    <form action="/search" method="get">
+        <input name="keyword" type="text" placeholder="검색어를 입력해주세요.">
+        <button>검색</button>
+    </form>
     <table>
         <thead>
         <tr>

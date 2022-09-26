@@ -75,4 +75,31 @@ public class InfoService {
     public void deletePost(Long id){
         infoRepository.deleteById(id);
     }
+
+
+    @Transactional
+    public List<InfoDto> searchPosts(String keyword){
+        List<info> infos = infoRepository.findByNameContaining(keyword);
+        List<InfoDto> infoDtoList = new ArrayList<>();
+
+        if(infos.isEmpty()) return infoDtoList;
+
+        for (info info : infos){
+            infoDtoList.add(this.convertEntityToDto(info));
+        }
+
+        return infoDtoList;
+    }
+
+    private InfoDto convertEntityToDto(info info){
+        return InfoDto.builder()
+                .id(info.getId())
+                .name(info.getName())
+                .age(info.getAge())
+                .department(info.getDepartment())
+                .introduction(info.getIntroduction())
+                .createdTime(info.getCreatedTime())
+                .modifiedTime(info.getModifiedTime())
+                .build();
+    }
 }

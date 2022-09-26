@@ -61,4 +61,12 @@ public class InfoController {
         infoService.deletePost(id);
         return "redirect:/";
     }
+
+    @GetMapping("/search")
+    public String search(@RequestParam(value = "keyword") String keyword, Model model){
+        List<InfoDto> infoDtoList = infoService.searchPosts(keyword);
+        model.addAttribute("infoList", infoDtoList);
+
+        return "info/list.html";
+    }
 }
