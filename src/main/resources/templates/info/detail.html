@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>상세 페이지</title>
+</head>
+<body>
+
+<h2 th:text="${infoDto.name}"></h2>
+<p th:text="${infoDto.age}"></p>
+<p th:text="${infoDto.department}"></p>
+<p th:inline="text">작성일: [[${#temporals.format(infoDto.createdTime, 'yyyy-MM-dd HH:mm')}]]</p>
+<p th:inline="text">수정일: [[${#temporals.format(infoDto.modifiedTime, 'yyyy-MM-dd HH:mm')}]]</p>
+<p th:text="${infoDto.introduction}"></p>
+
+<a th:href="@{'/info/edit/' + ${infoDto.id}}">
+    <button> 수정 </button>
+</a>
+
+<form th:action="@{'/info/delete/' + ${infoDto.id}}" th:method="delete">
+    <button type="submit">삭제</button>
+</form>
+
+</body>
+</html>

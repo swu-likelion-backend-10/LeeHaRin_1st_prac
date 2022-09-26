@@ -5,7 +5,30 @@
     <title>메인 화면</title>
 </head>
 <body>
-    <h1>인적사항 목록이 출력될 예정입니다.</h1>
     <a th:href="@{/info}">글쓰기</a>
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>작성일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="info: ${infoList}">
+            <td>
+                <span th:text="${info.getId()}"></span>
+            </td>
+            <td>
+                <a th:href="@{'/info/'+${info.getId()}}">
+                    <span th:text="${info.getName()}"></span>
+                </a>
+            </td>
+            <td>
+                <span th:text="${#temporals.format(info.getCreatedTime(), 'yyyy-MM-dd HH:mm')}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>

@@ -1,10 +1,12 @@
 package week.weekhomework.info.dto;
 
 import lombok.Builder;
+import lombok.Getter;
 import week.weekhomework.info.domain.info;
 
 import java.time.LocalDateTime;
 
+@Getter
 public class InfoDto {
     private Long id;
     private String name;

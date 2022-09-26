@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import week.weekhomework.info.dto.InfoDto;
 
 import javax.persistence.*;
 
@@ -36,6 +37,13 @@ public class info extends BaseTimeEntity {
         this.age = age;
         this.department = department;
         this.introduction = introduction;
+    }
+
+    public void update(InfoDto infodto){
+        this.name = infodto.getName();
+        this.age = infodto.getAge();
+        this.department = infodto.getDepartment();
+        this.introduction = infodto.getIntroduction();
     }
 
 
